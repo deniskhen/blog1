@@ -13,19 +13,19 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        Post::factory()->create([
+        Post::create([
             'title' => 'Первый пост',
             'content' => 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
             'description' => 'Lorem ipsum',
             'is_published' => true,
         ]);
-        Post::factory()->create([
+        Post::create([
             'title' => 'Второй пост',
             'content' => 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
             'description' => 'Lorem ipsum',
             'is_published' => true,
         ]);
-        Post::factory()->create([
+        Post::create([
             'title' => 'Третий пост',
             'content' => 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
             'description' => 'Lorem ipsum',
