@@ -58,9 +58,9 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit(Post $post): Factory|Application|View
     {
-        //
+        return \view('posts.edit', compact('post'));
     }
 
     /**
