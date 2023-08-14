@@ -7,6 +7,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class PostController extends Controller
 {
@@ -37,14 +39,22 @@ class PostController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Post $post): Factory|Application|View|string
+//    /**
+//     * Display the specified resource.
+//     */
+//    public function show(Post $post): Factory|Application|View|string
+//    {
+//        return $post->is_published ? \view('posts.show', compact('post')): 'Нет такого поста';
+//    }
+    public function show(Post $post): Factory|Application|View
     {
-        return $post->is_published ? \view('posts.show', compact('post')): 'Нет такого поста';
-    }
+        if (!$post->is_published) {
+            abort(ResponseAlias::HTTP_NOT_FOUND);
+//            abort(404);
+        }
 
+        return \view('posts.show', compact('post'));
+    }
     /**
      * Show the form for editing the specified resource.
      */
@@ -66,6 +76,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
     }
 }
