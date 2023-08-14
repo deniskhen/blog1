@@ -1,4 +1,5 @@
 @include('layouts.header')
+
 <!-- Blog Section -->
 
 <section id="blog">
