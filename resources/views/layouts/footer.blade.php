@@ -47,6 +47,16 @@
 <script src="{{ asset('assets/js/jquery.parallax.js') }}"></script>
 <script src="{{ asset('assets/js/smoothscroll.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+<script>
+    ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .then( editor => {
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
+</script>
 
 </body>
 </html>

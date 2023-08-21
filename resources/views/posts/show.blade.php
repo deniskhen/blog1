@@ -33,9 +33,9 @@
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading"><a href="#">Jen Lopez ( Designer )</a></h3>
-                                <div class="btn">
+                                <button class="btn_edit">
                                     <a href="{{ route('posts.edit', [$post]) }}">Редактировать</a>
-                                </div>
+                                </button>
                             </div>
                         </div>
                     </div>

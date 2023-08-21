@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $content
  * @property string $description
  * @property string $is_published
+ * @method static create(array $array)
  */
 
 class Post extends Model
