@@ -11,8 +11,8 @@
     </label>
     </div>
     <div class="mb-3">
-    <label for="editor" class="form-label">
-        <textarea name="content" id="editor" cols="30" rows="10" class="form-control">
+    <label for="content" class="form-label">
+        <textarea name="content" id="content" cols="30" rows="10" class="form-control">
             {{ $post->content }}
         </textarea>
     </label>
@@ -34,6 +34,17 @@
 
 </form>
 </div>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#content' ) )
+        .then( editor => {
+            console.log( editor );
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 
 @include('layouts.footer')
 

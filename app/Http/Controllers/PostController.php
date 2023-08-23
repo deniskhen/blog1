@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        //ToDo ДЗ
     }
 
     /**
@@ -37,7 +37,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //ToDo ДЗ
     }
 
 //    /**
