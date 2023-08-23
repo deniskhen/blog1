@@ -30,10 +30,15 @@
     </label>
     <button type="submit" class="btn btn-primary">Сохранить</button>
     </div>
-
-
 </form>
 </div>
+<form action="{{ route('posts.destroy', [$post]) }}" method="post">
+    @csrf
+    @method('delete')
+    <button type="submit" class="btn btn-primary">
+        Удалить
+    </button>
+</form>
 
 <script>
     ClassicEditor
