@@ -57,4 +57,8 @@
 {{--если наоборот: создать страницу с хедером и с футером и в нее вставлять через --}}
 {{--команду @yield все остальные страницы--}}
 
-{{--ckeditor laravel blade подключить к проекту полноценный текстовый редактор--}}
+{{--ckeditor laravel blade подключить к проекту полноценный текстовый редактор
+https://themewp.inform.click/kak-ustanovit-i-ispolzovat-ckeditor-v-laravel/
+https://ckeditor.com/docs/ckeditor5/latest/installation/getting-started/predefined-builds.html#classic-editor
+https://ckeditor.com/docs/ckeditor5/latest/installation/integrations/laravel.html
+https://ckeditor.com/docs/ckeditor5/latest/installation/getting-started/quick-start.html--}}
