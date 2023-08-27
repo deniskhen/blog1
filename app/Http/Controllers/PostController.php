@@ -46,9 +46,7 @@ class PostController extends Controller
             'is_published' => true,
         ]);
 
-        $post->title = $data['title'];
-        $post->content = $data['content'];
-        $post->description = $data['description'];
+        $post->update($data);
         $post->save();
 
         return redirect()->route('posts.index', $post);
