@@ -41,30 +41,39 @@
                     </div>
 
                     <div class="blog-comment">
-                        <h3>Comments</h3>
+                        <h3>Комментарии</h3>
+                        @foreach($post->comments as $comment)
                         <div class="media">
                             <div class="media-object pull-left">
                                 <img src="{{ asset('assets/images/comment-image1.jpg') }}" class="img-responsive img-circle" alt="Blog Image 11">
                             </div>
                             <div class="media-body">
-                                <h3 class="media-heading">David Jones</h3>
-                                <span>3 days ago</span>
-                                <p>Aliquam gravida arcu at risus blandit, in interdum metus varius. Cras efficitur, ex sit amet tincidunt rhoncus, dui ex hendrerit risus, ac dapibus ligula mi id leo. In auctor dui justo, ac consequat dui posuere ac.</p>
+                                <h3 class="media-heading">{{ $comment->user->name }}</h3>
+                                <span>{{ $comment->created_at }}</span>
+                                <p>{{ $comment->content }}</p>
+                                <form action="{{ route('comment.delete', [$comment]) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <input type="submit" id="btn_delete" value="&#128465;" onclick="return confirm('Удалить?')">
+                                </form>
                             </div>
                         </div>
+                        @endforeach
                     </div>
 
+                    @if(auth()->user())
                     <div class="blog-comment-form">
                         <h3>Написать комментарий</h3>
-                        <form action="#" method="post">
-                            <input type="text" class="form-control" placeholder="Name" name="name" required>
-                            <input type="email" class="form-control" placeholder="Email" name="email" required>
-                            <textarea name="message" rows="5" class="form-control" id="message" placeholder="Message" message="message" required="required"></textarea>
+                        <form action="{{ route('comment.create') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+                            <textarea name="content" rows="5" class="form-control" id="message" placeholder="Написать комментарий" message="message" required="required"></textarea>
                             <div class="col-md-3 col-sm-4">
                                 <input name="submit" type="submit" class="form-control" id="submit" value="Post Your Comment">
                             </div>
                         </form>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

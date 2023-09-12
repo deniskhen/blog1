@@ -2,57 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentStoreRequest;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CommentStoreRequest $request)
     {
-        //
-    }
+        $data = $request->validated();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Comment $comment)
-    {
-        //
-    }
+//        $comment = new Comment();
+//        $comment->user_id = auth()->user()->id;
+//        $comment->content = $data['content'];
+//        $comment->post_id = $data['post_id'];
+//        $comment->save();
+//        return response()->redirectToRoute('posts.show', $data['post_id']);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Comment $comment)
-    {
-        //
-    }
+        Comment::query()->create([
+            'user_id' => auth()->user()->id,
+            'content' => $data['content'],
+            'post_id' => $data['post_id'],
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Comment $comment)
-    {
-        //
+        return redirect()->route('posts.show', $data['post_id']);
     }
 
     /**
@@ -60,6 +37,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $postId = $comment->post_id;
+        $comment->delete();
+        return redirect()->route('posts.show', $postId);
     }
 }

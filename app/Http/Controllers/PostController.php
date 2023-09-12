@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index(): Factory|Application|View
     {
-        $posts = Post::query()->where('is_published','=',true)->get();
+        $posts = Post::query()->without('comments')->where('is_published','=',true)->get();
 
 //        return view('posts', ['posts' => $posts]);
         return view('posts.index', compact('posts'));
